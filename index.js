@@ -18,7 +18,9 @@ app.get("/",(req,res)=>{
     res.send("NOTES API's");
 })
 
-mongoose.connect(process.env.MONGODB_URI).then(()=>app.listen(process.env.PORT,()=>{
+const PORT = process.env.PORT || 5000
+
+mongoose.connect(process.env.MONGODB_URI).then(()=>app.listen(PORT,()=>{
     console.log("Server Started on port no 4000")
 })).catch(()=>{
     console.log("Error in Connecting to DB")
