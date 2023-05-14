@@ -15,7 +15,7 @@ app.use("/users",userRouter);
 app.use("/notes",notesRouter);
 
 app.get("/",(req,res)=>{
-    res.send("NOTES API's");
+    res.status(200).send("NOTES API's");
 })
 
 const PORT = process.env.PORT || 4000
