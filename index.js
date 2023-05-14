@@ -26,9 +26,7 @@ app.get("/health",(req,res)=>{
     });
 })
 
-const PORT = process.env.PORT || 4000
-
-mongoose.connect(process.env.MONGODB_URI).then(()=>app.listen(PORT,()=>{
+mongoose.connect(process.env.MONGODB_URI).then(()=>app.listen(process.env.PORT || 3000,()=>{
     console.log("Server Started on port no 4000")
 })).catch(()=>{
     console.log("Error in Connecting to DB")
