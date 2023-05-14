@@ -15,7 +15,15 @@ app.use("/users",userRouter);
 app.use("/notes",notesRouter);
 
 app.get("/",(req,res)=>{
-    res.status(200).send("NOTES API's");
+    res.status(200).json({
+        status: 'success'
+    });
+})
+
+app.get("/health",(req,res)=>{
+    res.status(200).json({
+        status: 'success'
+    });
 })
 
 const PORT = process.env.PORT || 4000
