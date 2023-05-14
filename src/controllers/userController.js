@@ -25,6 +25,7 @@ const signup = async (req,res)=>{
 
         const token = jwt.sign({email:result.email,id:result._id},process.env.SECRET_KEY);
         res.status(201).json({user:result,token:token});
+        console.log("Success Added")
     }catch(error){
         console.log(error)
         res.status(500).json({error:error})
@@ -44,7 +45,7 @@ const login = async (req,res)=>{
         if(!matchPassword){
             return res.status(400).json({error:"Invalid Credentials"});
         }
-        const token = jwt.sign({email:isExistingUser.email,id:isExistingUser._id},SECRET_KEY);
+        const token = jwt.sign({email:isExistingUser.email,id:isExistingUser._id},process.env.SECRET_KEY);
         res.status(200).json({user:isExistingUser,token:token});
 
     }catch(error){
