@@ -23,7 +23,7 @@ const PORT = process.env.PORT || 3000
 app.listen(PORT,()=>{
     console.log("Server Started on port no"+PORT)
 })
-mongoose.connect(process.env.MONGODB_URI).then(()=>console.log("connnected to DBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB")).catch(()=>{
+mongoose.connect('mongodb+srv://ayush8385:Ayush8385@notes.tk6z9sp.mongodb.net/').then(()=>console.log("connnected to DBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB")).catch(()=>{
     console.log("Error in Connecting to DB")
 })
 
