@@ -19,16 +19,10 @@ app.get("/",(req,res)=>{
         status: 'success'
     });
 })
-
-app.get("/health",(req,res)=>{
-    res.status(200).json({
-        status: 'success'
-    });
-})
-
-mongoose.connect(process.env.MONGODB_URI).then(()=>app.listen(process.env.PORT || 3000,()=>{
+app.listen(process.env.PORT || 3000,()=>{
     console.log("Server Started on port no 4000")
-})).catch(()=>{
+})
+mongoose.connect(process.env.MONGODB_URI).then(()=>console.log("connnected to DB")).catch(()=>{
     console.log("Error in Connecting to DB")
 })
 
