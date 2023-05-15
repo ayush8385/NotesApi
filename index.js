@@ -7,15 +7,8 @@ const dotenv = require('dotenv');
 const cors = require('cors');
 
 dotenv.config()
-const connect = async () =>{
-    var db = await mongoose.connect('mongodb+srv://ayush8385:Ayush8385@notes.tk6z9sp.mongodb.net/?retryWrites=true&w=majority').then(()=>console.log("connnected to DBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB")).catch(()=>{
-        console.log("Error in Connecting to DB")
-    })
-}
-
 
 app.use(cors());
-connect();
 
 app.use(express.json());
 app.use("/users",userRouter);
@@ -26,11 +19,13 @@ app.get("/",(req,res)=>{
         status: 'success'
     });
 })
-const PORT = process.env.PORT || 3000
-app.listen(PORT,()=>{
-    console.log("Server Started on port no"+PORT)
+
+const PORT = process.env.PORT || 4000
+
+mongoose.connect(process.env.MONGODB_URI).then(()=>app.listen(PORT,()=>{
+    console.log("Server Started on port no "+PORT)
+})).catch(()=>{
+    console.log("Error in Connecting to DB")
 })
-
-
 
 module.exports = app
